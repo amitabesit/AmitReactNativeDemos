@@ -1,4 +1,4 @@
-package com.helloworld
+package amit.reactapp.api.demos
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -1,33 +1,24 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  Dimensions,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
-const numbers = Array.from({ length: 100 }, (_, i) => i + 1);
-const numColumns = 2;
-const screenWidth = Dimensions.get('window').width;
-const itemWidth = (screenWidth - 30) / numColumns;
+type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
 const HomeScreen = () => {
-  const renderItem = ({ item }: { item: number }) => (
-    <View style={[styles.gridItem, { width: itemWidth }]}>
-      <Text style={styles.number}>{item}</Text>
-    </View>
-  );
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
+  const handleOpenGrid = () => {
+    navigation.navigate('Grid');
+  };
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={numbers}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.toString()}
-        numColumns={numColumns}
-        contentContainerStyle={styles.contentContainer}
-      />
+      <Text style={styles.title}>Home Screen</Text>
+      <TouchableOpacity style={styles.button} onPress={handleOpenGrid}>
+        <Text style={styles.buttonText}>Open Grid</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -35,23 +26,25 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-  },
-  contentContainer: {
-    padding: 10,
-  },
-  gridItem: {
-    height: 100,
-    margin: 5,
-    backgroundColor: '#f0f0f0',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 8,
+    backgroundColor: '#fff',
   },
-  number: {
+  title: {
     fontSize: 24,
+    marginBottom: 20,
+    color: '#000',
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
   },
 });
 

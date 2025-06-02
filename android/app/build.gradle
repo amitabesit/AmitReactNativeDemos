@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.helloworld"
+    namespace "amit.reactapp.api.demos"
     defaultConfig {
-        applicationId "com.helloworld"
+        applicationId "amit.reactapp.api.demos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

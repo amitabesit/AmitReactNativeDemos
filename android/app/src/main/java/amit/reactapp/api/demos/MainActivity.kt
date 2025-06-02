@@ -1,4 +1,4 @@
-package com.helloworld
+package amit.reactapp.api.demos
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -12,11 +12,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from './src/screens/SplashScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import GridScreen from './src/screens/GridScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
   Home: undefined;
+  Grid: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,8 +38,16 @@ function App(): React.JSX.Element {
           component={HomeScreen}
           options={{
             headerShown: true,
-            title: 'Grid Numbers',
+            title: 'Home',
             headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen 
+          name="Grid" 
+          component={GridScreen}
+          options={{
+            headerShown: true,
+            title: 'Grid Numbers',
           }}
         />
       </Stack.Navigator>
