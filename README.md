@@ -30,21 +30,35 @@ A React Native demo application showcasing various features including splash scr
 Before running the project, make sure you have the following installed:
 - Node.js (version >= 18)
 - Yarn package manager
-- Xcode (for iOS development)
 - Android Studio (for Android development)
+- Xcode (for iOS development)
 - CocoaPods (for iOS dependencies)
 
 ## Installation
 
 1. Clone the repository
+
 2. Install dependencies:
 ```bash
 yarn install
 ```
 
-3. Install iOS dependencies:
+3. Android Setup:
 ```bash
+# Clean and build Android project
+cd android && ./gradlew clean && cd ..
+
+# Run Android app
+yarn android
+```
+
+4. iOS Setup:
+```bash
+# Install iOS dependencies
 cd ios && pod install && cd ..
+
+# Run iOS app
+yarn ios
 ```
 
 ## Available Commands
