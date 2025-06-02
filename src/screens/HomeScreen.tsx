@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
+
+// Import the grid icon image
+import GridIcon from '../../assets/amit_grid_icon.png';
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -17,7 +20,10 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Home Screen</Text>
       <TouchableOpacity style={styles.button} onPress={handleOpenGrid}>
-        <Text style={styles.buttonText}>Open Grid</Text>
+        <View style={styles.buttonContent}>
+          <Image source={GridIcon} style={styles.icon} />
+          <Text style={styles.buttonText}>Open Grid</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -40,6 +46,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    marginRight: 8,
+    resizeMode: 'contain',
   },
   buttonText: {
     color: '#fff',
