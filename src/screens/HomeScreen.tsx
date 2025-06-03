@@ -36,12 +36,20 @@ const HomeScreen = () => {
         return;
       }
       const start = Date.now();
-      const result = await GeocoderModule.getAddress(lat, lng);
+      // Timeout promise
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Timeout: Address fetch took longer than 200 ms')), 200)
+      );
+      // Geocoder promise
+      const geocodePromise = GeocoderModule.getAddress(lat, lng);
+      // Race them
+      const result = await Promise.race([geocodePromise, timeoutPromise]);
       const end = Date.now();
       setAddress(result);
       setTimeTaken(end - start);
     } catch (e: any) {
-      setAddress('Error: ' + (e.message || e));
+      setAddress(e.message || 'Unknown error');
+      setTimeTaken(null);
     }
     setLoading(false);
   };
